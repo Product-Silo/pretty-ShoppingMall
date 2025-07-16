@@ -1,0 +1,13 @@
+* text=auto
+
+# LF로 고정할 파일들
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.module.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+.gitignore text eol=lf
