@@ -1,0 +1,45 @@
+.loginBox {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.kakaoBtn {
+  background: #fee500;
+  color: #181600;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.logoutBtn {
+  background: #eee;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.userInfo {
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  text-align: center;
+}
