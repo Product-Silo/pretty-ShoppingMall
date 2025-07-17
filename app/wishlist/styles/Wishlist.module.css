@@ -1,0 +1,94 @@
+.wishlistWrap {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(212, 123, 123, 0.08);
+  padding: 32px 24px 28px 24px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d47b7b;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #fff0f6;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(212, 123, 123, 0.04);
+  padding: 18px 14px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(212, 123, 123, 0.12);
+}
+
+.image {
+  width: 100%;
+  max-width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.info {
+  text-align: center;
+}
+
+.price {
+  color: #d47b7b;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.empty {
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+  margin: 40px 0;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 80px;
+  color: #d47b7b;
+  font-size: 1.2rem;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.actionBtn {
+  background: #ffe4ec;
+  color: #d47b7b;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s;
+}
+
+.actionBtn:hover {
+  background: #ffb6c1;
+}
