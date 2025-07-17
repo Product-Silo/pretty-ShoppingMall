@@ -1,0 +1,22 @@
+.footer {
+  margin-top: 48px;
+  padding: 24px 0 18px 0;
+  background: #f8f8fa;
+  color: #888;
+  text-align: center;
+  font-size: 0.98rem;
+}
+
+.siteName {
+  font-weight: bold;
+  color: #d47b7b;
+  margin-bottom: 4px;
+}
+
+.copy {
+  margin-bottom: 2px;
+}
+
+.contact {
+  font-size: 0.95rem;
+}
