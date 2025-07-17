@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import ReactQueryProvider from './config/ReactQueryProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -16,11 +17,13 @@ export const metadata = {
   description: '쇼핑몰 웹사이트',
 };
 
+// recoilprovider 감싸기는 body 기준입니다.
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );
