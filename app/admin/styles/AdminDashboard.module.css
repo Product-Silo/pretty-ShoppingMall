@@ -1,0 +1,189 @@
+.adminWrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoutBtn {
+  margin-bottom: 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addBtn {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+.addBtn:hover {
+  background: #357ae8;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #eee;
+  padding: 10px 8px;
+  text-align: left;
+}
+
+.table th {
+  background: #f5f7fa;
+}
+
+.table tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+
+.form input,
+.form textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.formBtns {
+  display: flex;
+  gap: 8px;
+}
+
+.formBtns button {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.formBtns button[type='submit'] {
+  background: #4f8cff;
+  color: #fff;
+}
+
+.formBtns button[type='button'] {
+  background: #eee;
+  color: #222;
+}
+
+.formBtns button[type='submit']:hover {
+  background: #357ae8;
+}
+
+.formBtns button[type='button']:hover {
+  background: #ddd;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: -4px;
+}
+
+.priceInputWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceBtn {
+  background: #eee;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.priceBtn:hover {
+  background: #dbeafe;
+}
+
+.select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.stockInputWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.stockBtn {
+  background: #eee;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.stockBtn:hover {
+  background: #dbeafe;
+}
+
+.adminModify_Btn {
+  padding: 8px 12px;
+  font-weight: bold;
+  margin-right: 4px;
+  border: none;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+.adminDel_Btn {
+  padding: 8px 12px;
+  font-weight: bold;
+  margin-left: 4px;
+  border: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
