@@ -60,6 +60,18 @@ export default function Home() {
   const [category, setCategory] = useState('');
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [wishlist, setWishlist] = useState([]);
+  const [user, setUser] = useState(null);
+
+  // 로그인 상태 추적
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+    return () => listener?.subscription.unsubscribe();
+  }, []);
 
   const {
     data: products = [],
@@ -94,7 +106,12 @@ export default function Home() {
     return matchSearch && matchCategory && matchPrice;
   });
 
+  // 로그아웃 상태에서 찜을 하려고 할 시에 경고창 띄우기
   const handleToggleWish = (id) => {
+    if (!user) {
+      alert('찜 기능은 로그인 후 이용 가능합니다.');
+      return;
+    }
     setWishlist((wish) =>
       wish.includes(id) ? wish.filter((w) => w !== id) : [...wish, id]
     );
@@ -120,7 +137,7 @@ export default function Home() {
         </section>
 
         <section className={styles.productSection}>
-          <h2 className={styles.sectionTitle}>추천 상품</h2>
+          <h2 className={styles.sectionTitle}>모든 상품</h2>
           {isLoading ? (
             <div>Loading...</div>
           ) : isError ? (
