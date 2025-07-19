@@ -129,25 +129,22 @@ export default function AdminDashboard() {
     const files = e.target.files;
     if (!files || files.length === 0) return;
     const uploadedUrls = [];
+    const user = (await supabase.auth.getUser()).data.user;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const fileExt = file.name.split('.').pop();
-      const filePath = `product_${Date.now()}_${Math.random()
-        .toString(36)
-        .substr(2, 6)}.${fileExt}`;
+      const filePath = `${user.id}_${Date.now()}_${i}.${fileExt}`;
       const { data, error } = await supabase.storage
         .from('products')
-        .upload(filePath, file);
+        .upload(filePath, file, { cacheControl: '3600', upsert: false });
       if (error) {
-        console.log('업로드 실패:', error);
+        alert('이미지 업로드 실패: ' + error.message);
+        continue;
       }
-      if (!error) {
-        const { data: publicUrlData } = supabase.storage
-          .from('products')
-          .getPublicUrl(filePath);
-        if (publicUrlData?.publicUrl)
-          uploadedUrls.push(publicUrlData.publicUrl);
-      }
+      const { data: publicUrlData } = supabase.storage
+        .from('products')
+        .getPublicUrl(filePath);
+      if (publicUrlData?.publicUrl) uploadedUrls.push(publicUrlData.publicUrl);
     }
     setForm((f) => ({
       ...f,
