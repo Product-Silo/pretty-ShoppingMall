@@ -1,10 +1,11 @@
 .loginWrap {
   max-width: 400px;
-  margin: 60px auto;
-  padding: 24px;
+  margin: 240px auto;
+  padding: 28px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 2px solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .loginForm {
@@ -29,6 +30,10 @@
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.loginBtn:hover {
+  background-color: blue;
 }
 
 .login_error {
