@@ -34,9 +34,9 @@ export default function NavBar() {
       <div className={styles.rightMenu}>
         {user ? (
           <>
-            <span className={styles.userInfo}>
-              반가워요 {user.user_metadata?.name || user.email}님!
-            </span>
+            {/*
+                      <span className={styles.userInfo}>반가워요!</span>
+          */}
             <button className={styles.linkBtn} onClick={handleLogout}>
               로그아웃
             </button>

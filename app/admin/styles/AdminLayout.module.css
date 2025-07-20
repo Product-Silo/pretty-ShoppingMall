@@ -1,0 +1,10 @@
+.layoutWrap {
+  display: flex;
+  min-height: 100vh;
+}
+
+.contentWrap {
+  flex: 1;
+  background: #fafbfc;
+  padding: 32px 40px;
+}

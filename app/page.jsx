@@ -139,7 +139,7 @@ export default function Home() {
         <section className={styles.productSection}>
           <h2 className={styles.sectionTitle}>모든 상품</h2>
           {isLoading ? (
-            <div>Loading...</div>
+            <div>로딩 중...</div>
           ) : isError ? (
             <div>에러가 발생했습니다: {error.message}</div>
           ) : (

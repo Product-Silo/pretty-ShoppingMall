@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { supabase } from '../../../supabase/supabaseClient';
+import styles from '../styles/AdminDashboard.module.css';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '../../supabase/supabaseClient';
-import styles from './styles/AdminDashboard.module.css';
 
-export default function AdminDashboardHome() {
-  const [showForm, setShowForm] = useState(false);
+export default function AdminProducts() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [editProduct, setEditProduct] = useState(null);
   const [form, setForm] = useState({
     name: '',
     price: '',
@@ -37,14 +39,49 @@ export default function AdminDashboardHome() {
     });
   }
 
-  async function handleLogout() {
-    await supabase.auth.signOut();
-    router.replace('/admin/login');
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => {
+      if (!data.user) {
+        router.replace('/admin/login');
+      }
+    });
+  }, [router]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  async function fetchProducts() {
+    setLoading(true);
+    const { data } = await supabase
+      .from('products')
+      .select('*')
+      .order('created_at', { ascending: false });
+    setProducts(data || []);
+    setLoading(false);
   }
 
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
+  }
+
+  function openForm(product) {
+    setEditProduct(product);
+    setForm({
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      images: Array.isArray(product.images)
+        ? product.images
+        : product.images
+        ? product.images.split(',')
+        : [],
+      category: product.category || '',
+      stock: product.stock || 0,
+    });
+    setImageUrlInput('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
   }
 
   // 이미지 URL 입력 후 추가
@@ -94,8 +131,8 @@ export default function AdminDashboardHome() {
       stock: Number(form.stock),
       images: form.images,
     };
-    await supabase.from('products').insert([payload]);
-    setShowForm(false);
+    await supabase.from('products').update(payload).eq('id', editProduct.id);
+    setEditProduct(null);
     setForm({
       name: '',
       price: '',
@@ -104,21 +141,21 @@ export default function AdminDashboardHome() {
       category: '',
       stock: 0,
     });
-    router.push('/admin/products');
+    setImageUrlInput('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+    fetchProducts();
+  }
+
+  async function handleDelete(id) {
+    if (!window.confirm('정말 삭제하시겠습니까?')) return;
+    await supabase.from('products').delete().eq('id', id);
+    fetchProducts();
   }
 
   return (
     <div className={styles.adminWrap}>
-      <div className={styles.admin_flex}>
-        <h2>관리자 대시보드</h2>
-        <button onClick={handleLogout} className={styles.logoutBtn}>
-          로그아웃
-        </button>
-      </div>
-      <button className={styles.addBtn} onClick={() => setShowForm(true)}>
-        상품 등록
-      </button>
-      {showForm && (
+      <h1>상품 관리</h1>
+      {editProduct && (
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
             name="name"
@@ -153,9 +190,6 @@ export default function AdminDashboardHome() {
               +1,000
             </button>
           </div>
-          <p className={styles.text}>
-            이미지를 올려주세요. 여러 장 업로드/입력 가능
-          </p>
           <div
             style={{
               display: 'flex',
@@ -228,7 +262,6 @@ export default function AdminDashboardHome() {
             onChange={handleImageUpload}
             className={styles.fileInput}
           />
-          <p className={styles.text}>카테고리</p>
           <select
             name="category"
             value={form.category}
@@ -240,7 +273,6 @@ export default function AdminDashboardHome() {
             <option value="팔찌">팔찌</option>
             <option value="목걸이">목걸이</option>
           </select>
-          <p className={styles.text}>재고</p>
           <div className={styles.stockInputWrap}>
             <button
               type="button"
@@ -265,7 +297,6 @@ export default function AdminDashboardHome() {
               +1
             </button>
           </div>
-          <p className={styles.text}>설명</p>
           <textarea
             name="description"
             value={form.description}
@@ -273,13 +304,54 @@ export default function AdminDashboardHome() {
             placeholder="상품에 대한 설명을 입력해주세요"
           />
           <div className={styles.formBtns}>
-            <button type="submit">등록</button>
-            <button type="button" onClick={() => setShowForm(false)}>
+            <button type="submit">수정</button>
+            <button type="button" onClick={() => setEditProduct(null)}>
               취소
             </button>
           </div>
         </form>
       )}
+      <div className={styles.tableWrap}>
+        {loading ? (
+          <div>로딩 중입니다....</div>
+        ) : (
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>상품명</th>
+                <th>가격</th>
+                <th>카테고리</th>
+                <th>재고</th>
+                <th>관리</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((p) => (
+                <tr key={p.id}>
+                  <td>{p.name}</td>
+                  <td>{p.price?.toLocaleString()}원</td>
+                  <td>{p.category}</td>
+                  <td>{p.stock}</td>
+                  <td>
+                    <button
+                      className={styles.adminModify_Btn}
+                      onClick={() => openForm(p)}
+                    >
+                      수정
+                    </button>
+                    <button
+                      className={styles.adminDel_Btn}
+                      onClick={() => handleDelete(p.id)}
+                    >
+                      삭제
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 }
