@@ -5,7 +5,7 @@ const menu = [
   { name: '대시보드', href: '/admin' },
   { name: '상품관리', href: '/admin/products' },
   { name: '홈화면으로 이동', href: '/' },
-  { name: '설정', href: '/admin/settings' },
+  //{ name: '설정', href: '/admin/settings' },
 ];
 
 export default function Sidebar() {
