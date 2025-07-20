@@ -52,6 +52,12 @@ export default function AdminLoginPage() {
           {loading ? '로그인 중...' : '로그인'}
         </button>
         {error && <div className={styles.login_error}>{error}</div>}
+        {error && (
+          <div className={styles.login_error}>
+            에러가 났습니다. <br />
+            이메일 혹은 비밀번호를 제대로 입력해주세요
+          </div>
+        )}
       </form>
     </div>
   );
