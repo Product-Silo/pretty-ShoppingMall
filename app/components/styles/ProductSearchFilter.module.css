@@ -39,3 +39,79 @@
   font-size: 1.2rem;
   color: #aaa;
 }
+
+/* === 반응형 미디어 쿼리 === */
+
+/* PC: 993px 이상 */
+@media (min-width: 993px) {
+  .filterWrap {
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .searchInput,
+  .categorySelect {
+    width: 200px;
+    font-size: 1rem;
+    padding: 8px 14px;
+  }
+
+  .priceInput {
+    width: 90px;
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+}
+
+/* 태블릿: 501px ~ 992px */
+@media (min-width: 501px) and (max-width: 992px) {
+  .filterWrap {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .searchInput,
+  .categorySelect {
+    width: 140px;
+    font-size: 0.95rem;
+    padding: 7px 10px;
+  }
+
+  .priceInput {
+    width: 70px;
+    font-size: 0.95rem;
+    padding: 7px 8px;
+  }
+}
+
+/* 모바일: 500px 이하 */
+@media (max-width: 500px) {
+  .filterWrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .searchInput,
+  .categorySelect {
+    width: 100%;
+    font-size: 0.92rem;
+    padding: 6px 8px;
+    box-sizing: border-box;
+  }
+
+  .priceRange {
+    gap: 4px;
+  }
+
+  .priceInput {
+    width: 100%;
+    font-size: 0.92rem;
+    padding: 6px 6px;
+    box-sizing: border-box;
+  }
+}

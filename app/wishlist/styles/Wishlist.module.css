@@ -1,14 +1,14 @@
 .wishlistWrap {
-  max-width: 900px;
+  border: 1px solid gainsboro;
   margin: 40px auto;
   background: #fff;
-  border-radius: 16px;
   box-shadow: 0 2px 12px rgba(212, 123, 123, 0.08);
   padding: 32px 24px 28px 24px;
+  width: 80vw;
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #d47b7b;
   margin-bottom: 18px;
@@ -19,6 +19,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 24px;
+  width: 100%;
 }
 
 .card {
@@ -30,6 +31,9 @@
   flex-direction: column;
   align-items: center;
   transition: box-shadow 0.2s;
+  margin: auto;
+  width: 80%;
+  min-width: 0;
 }
 
 .card:hover {
@@ -46,7 +50,23 @@
 }
 
 .info {
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.info h3 {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  margin: 0 0 2px 0;
+  padding: 0;
+  text-align: left;
 }
 
 .price {
@@ -91,4 +111,127 @@
 
 .actionBtn:hover {
   background: #ffb6c1;
+}
+
+@media (min-width: 501px) and (max-width: 992px) {
+  .wishlistWrap {
+    max-width: 90vw;
+    padding: 18px 8px 14px 8px;
+    border-radius: 10px;
+    margin: 24px auto;
+    box-shadow: 0 1px 6px rgba(212, 123, 123, 0.05);
+  }
+
+  .title {
+    font-size: 1.44rem;
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    border-radius: 8px;
+    padding: 10px 6px 10px 6px;
+  }
+
+  .image {
+    max-width: 120px;
+    height: 120px;
+    border-radius: 7px;
+    margin-bottom: 8px;
+  }
+
+  .btnGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .actionBtn {
+    font-size: 1.36rem;
+    padding: 8px 0;
+    border-radius: 7px;
+  }
+}
+
+@media (max-width: 500px) {
+  .wishlistWrap {
+    margin: 20px auto;
+    width: 90%;
+    padding: 8px 2vw 8px 2vw;
+    box-shadow: 0 1px 6px rgba(212, 123, 123, 0.05);
+    border: none;
+  }
+
+  .title {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card {
+    border-radius: 0;
+    padding: 6px 4px 8px 4px;
+    min-height: 130px;
+  }
+
+  .image {
+    max-width: 90vw;
+    height: 80px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+
+  .btnGroup {
+    text-align: center;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 18px;
+    width: 100%;
+  }
+
+  .actionBtn {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 8px 0;
+    border-radius: 0;
+  }
+
+  .grid {
+    width: 100%;
+  }
+  .card {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .info {
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+    overflow: hidden;
+  }
+  .info h3 {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.98rem;
+    margin: 0 0 2px 0;
+    padding: 0;
+    text-align: left;
+  }
 }

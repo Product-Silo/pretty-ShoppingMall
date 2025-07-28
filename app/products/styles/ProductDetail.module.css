@@ -14,6 +14,70 @@
   }
 }
 
+@media (max-width: 600px) {
+  .detail {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 4vw;
+  }
+
+  .images {
+    gap: 8px;
+  }
+
+  .image {
+    margin: 0 auto;
+    max-width: 100vw;
+    height: 180px;
+    border-radius: 6px;
+  }
+
+  .info {
+    position: static !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 12px 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .price {
+    font-size: 1.08rem;
+  }
+
+  .inquiryBtn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px 0;
+    margin-top: 12px;
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 500px) {
+  .detail {
+    gap: 8px;
+    padding: 8px 2vw;
+  }
+
+  .image {
+    height: 120px;
+    border-radius: 4px;
+  }
+
+  .info {
+    padding: 8px 0;
+  }
+
+  .inquiryBtn {
+    font-size: 0.98rem;
+    padding: 10px 0;
+  }
+}
+
 .images {
   flex: 1;
   display: flex;
@@ -37,30 +101,94 @@
   gap: 16px;
 }
 
+@media (min-width: 601px) {
+  .info {
+    position: fixed;
+    top: 100px;
+    right: 5vw;
+    width: 320px;
+    max-width: 32vw;
+    min-width: 220px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    padding: 18px 16px;
+    z-index: 10;
+  }
+  .detail {
+    padding-right: 360px;
+  }
+}
+
 .price {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #d47b7b;
+  margin: 0 0 8px 0;
 }
 
 .desc {
-  color: #444;
-  line-height: 1.6;
+  white-space: pre-line;
+  color: #222;
+  font-size: 1rem;
+  margin-bottom: 12px;
 }
 
 .inquiryBtn {
-  background: #fee500;
-  color: #181600;
+  background: #ffb6c1;
+  color: #18181a;
   border: none;
   border-radius: 8px;
-  padding: 12px 0;
-  font-size: 1.1rem;
+  padding: 10px 24px;
   font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 16px;
-  transition: background 0.2s;
+  margin-top: 10px;
+  align-self: flex-start;
+  transition: background 0.15s;
 }
 
 .inquiryBtn:hover {
-  background: #ffe066;
+  background: #ffe4ec;
+}
+
+.infoMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  padding: 10px 0 0 0;
+}
+
+@media (max-width: 500px) {
+  .infoMobile {
+    padding: 10px 0 0 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+    margin-left: 10px;
+  }
+
+  .inquiryBtnFixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    max-width: 100vw;
+    z-index: 100;
+    background: #ffb6c1;
+    color: #18181a;
+    border: none;
+    border-radius: 0;
+    padding: 16px 0;
+    font-weight: bold;
+    font-size: 1.08rem;
+    cursor: pointer;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.07);
+    transition: background 0.15s;
+  }
+  .inquiryBtnFixed:hover {
+    background: #ffe4ec;
+  }
 }

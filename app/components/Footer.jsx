@@ -10,6 +10,9 @@ export default function Footer() {
       <div className={styles.contact}>
         개발 문의: know.warehouse02@gmail.com
       </div>
+      <div className={styles.contact}>
+        택배비 별도, 15만원 이상 구매시 택배비 무료
+      </div>
     </footer>
   );
 }
