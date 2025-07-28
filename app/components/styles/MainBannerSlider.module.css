@@ -37,3 +37,57 @@
   */
   color: white;
 }
+
+/* === 반응형 미디어 쿼리 === */
+
+/* PC: 993px 이상 */
+@media (min-width: 993px) {
+  .bannerSwiper {
+    min-height: 320px;
+  }
+
+  .bannerItem,
+  .bannerItem img {
+    height: 320px;
+  }
+
+  .bannerText {
+    padding: 24px 20px 20px 20px;
+    font-size: 1.6rem;
+  }
+}
+
+/* 태블릿: 501px ~ 992px */
+@media (min-width: 501px) and (max-width: 992px) {
+  .bannerSwiper {
+    min-height: 200px;
+  }
+
+  .bannerItem,
+  .bannerItem img {
+    height: 200px;
+  }
+
+  .bannerText {
+    padding: 14px 12px 12px 12px;
+    font-size: 1.1rem;
+  }
+}
+
+/* 모바일: 500px 이하 */
+@media (max-width: 500px) {
+  .bannerSwiper {
+    min-height: 170px;
+    border-radius: 10px;
+  }
+
+  .bannerItem,
+  .bannerItem img {
+    height: 170px;
+  }
+
+  .bannerText {
+    padding: 12px 10px 10px 10px;
+    font-size: 1.05rem;
+  }
+}

@@ -9,7 +9,7 @@ import styles from './page.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '../supabase/supabaseClient';
 import Link from 'next/link';
-import ReviewSection from './components/ReviewSection';
+//import ReviewSection from './components/ReviewSection'; -후기 받으면 추가-
 import Footer from './components/Footer';
 
 const bannerSlides = [
@@ -132,6 +132,7 @@ export default function Home() {
             onPriceChange={setPriceRange}
           />
         </section>
+
         <section className={styles.bannerSection}>
           <MainBannerSlider slides={bannerSlides} />
         </section>
@@ -173,7 +174,9 @@ export default function Home() {
           )}
         </section>
       </main>
-      <ReviewSection />
+      {/*
+            <ReviewSection />
+      */}
       <Footer />
     </>
   );

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../supabase/supabaseClient';
 import styles from './styles/Wishlist.module.css';
+import Link from 'next/link';
 
 export default function WishlistPage() {
   const [wishlist, setWishlist] = useState([]);
@@ -51,7 +52,7 @@ export default function WishlistPage() {
       ) : (
         <div className={styles.grid}>
           {products.map((p) => (
-            <div key={p.id} className={styles.card}>
+            <Link key={p.id} href={`/products/${p.id}`} className={styles.card}>
               <img
                 src={p.images?.[0] || '/placeholder.png'}
                 alt={p.name}
@@ -61,7 +62,7 @@ export default function WishlistPage() {
                 <h3>{p.name}</h3>
                 <p className={styles.price}>{p.price?.toLocaleString()}원</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
